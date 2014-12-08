@@ -1,1 +1,5 @@
-public class
+package transjurassienne;
+
+public class Club {
+    
+}

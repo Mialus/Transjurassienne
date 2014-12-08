@@ -1,1 +1,5 @@
-public static void (Strings[] args)
+package transjurassienne;
+
+public class Main {
+    
+}
