@@ -6,7 +6,7 @@ public class Main {
     
     public static void main(String[] args) {
 
-        File repertoire = new File("E:/Dev/GitHub/Transjurassienne/Transjurassienne/csv");    
+        File repertoire = new File("./csv");    
         String [] listefichiers;
         listefichiers=repertoire.list();
         // parcourir tous les .csv
@@ -15,7 +15,7 @@ public class Main {
             if(listefichiers[i].endsWith(".csv")==true){
                 try{
                     String ligne;
-                    BufferedReader lecteurAvecBuffer = new BufferedReader(new FileReader("E:/Dev/GitHub/Transjurassienne/Transjurassienne/csv/" +listefichiers[i]));
+                    BufferedReader lecteurAvecBuffer = new BufferedReader(new FileReader("./csv/" +listefichiers[i]));
                     while ((ligne = lecteurAvecBuffer.readLine()) != null){
                         ligne = lecteurAvecBuffer.readLine();
                         ligne = lecteurAvecBuffer.readLine();
