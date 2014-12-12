@@ -8,6 +8,25 @@ import java.util.List;
 
 public class Data {
     List<Personne> listePersonne = new ArrayList<Personne>();
+    List<Inscription> listeInscription = new ArrayList<Inscription>();
+    List<Classement> listeClassement = new ArrayList<Classement>();
+    List<Course> listeCourse = new ArrayList<Course>();
+
+    public List<Personne> getListePersonne() {
+        return listePersonne;
+    }
+
+    public List<Inscription> getListeInscription() {
+        return listeInscription;
+    }
+
+    public List<Classement> getListeClassement() {
+        return listeClassement;
+    }
+
+    public List<Course> getListeCourse() {
+        return listeCourse;
+    }
     
     public Data(){
         File repertoire = new File("./csv");    
@@ -28,8 +47,9 @@ public class Data {
                         String[] items=ligne.split(";");
                         
                         // Items : 0 = dossard, 1 = classement, 2 = nom, 3 = naissance, 4 = Club,
-                        // 5 = Nation, 6 = tmps, 7 = course, 8 = nom_cat, 9 = class_cat
+                        // 5 = Nation, 6 = tmps, 7 = course (dernière lettre F = femme, M = homme), 8 = nom_cat, 9 = class_cat
                         annee = Integer.parseInt(listefichiers[i].replace(".csv", ""));
+                        Personne p = new Personne(items[2], Integer.parseInt(items[3]), true);
                         
                         // tout afficher
                         for (int j=0;j<items.length;j++)
@@ -43,7 +63,7 @@ public class Data {
             }
         }
     }
-    
+
     public static void main(String[] args) {
         Data data = new Data();
     }
