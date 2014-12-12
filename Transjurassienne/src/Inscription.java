@@ -8,6 +8,7 @@ public class Inscription {
     private List<List<Personne>> m_listePersonne;
     private int m_annee;
     private int m_dossard;
+    private Classement m_classement;
     
     public Inscription(List<List<Personne>> liste, int anne, int dos){
         m_listePersonne=liste;
@@ -28,5 +29,7 @@ public class Inscription {
         return m_dossard;
     }
     
-    
+    public Classement getClassement() {
+        return m_classement;
+    }
 }

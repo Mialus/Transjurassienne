@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
-    List<Personne> listePersonne = new ArrayList<Personne>();
-    List<Inscription> listeInscription = new ArrayList<Inscription>();
-    List<Classement> listeClassement = new ArrayList<Classement>();
-    List<Course> listeCourse = new ArrayList<Course>();
+    List<Personne> listePersonne = new ArrayList<>();
+    List<Inscription> listeInscription = new ArrayList<>();
+    List<Classement> listeClassement = new ArrayList<>();
+    List<Course> listeCourse = new ArrayList<>();
 
     public List<Personne> getListePersonne() {
         return listePersonne;
@@ -31,7 +31,6 @@ public class Data {
     public Data(){
         File repertoire = new File("./csv");    
         String [] listefichiers;
-        int annee=0;
         listefichiers=repertoire.list();
         // parcourir tous les .csv
         for(int i=0;i<listefichiers.length;i++){
@@ -39,22 +38,55 @@ public class Data {
             if(listefichiers[i].endsWith(".csv")==true){
                 try{
                     String ligne;
+                    int annee=0;
                     BufferedReader lecteurAvecBuffer = new BufferedReader(new FileReader("./csv/" +listefichiers[i]));
+                    System.out.println(lecteurAvecBuffer.readLine());
                     while ((ligne = lecteurAvecBuffer.readLine()) != null){
-                        ligne = lecteurAvecBuffer.readLine();
-                        ligne = lecteurAvecBuffer.readLine();
-                    
+                        boolean masculin;
+                        
                         String[] items=ligne.split(";");
                         
-                        // Items : 0 = dossard, 1 = classement, 2 = nom, 3 = naissance, 4 = Club,
-                        // 5 = Nation, 6 = tmps, 7 = course (dernière lettre F = femme, M = homme), 8 = nom_cat, 9 = class_cat
                         annee = Integer.parseInt(listefichiers[i].replace(".csv", ""));
-                        Personne p = new Personne(items[2], Integer.parseInt(items[3]), true);
+                        int dossard = Integer.parseInt(items[0]);
+                        int classement_scra = Integer.parseInt(items[1]);
+                        String nom = items[2];
+                        int naissance = Integer.parseInt(items[3]);
+                        String club = items[4];
+                        String pays = items[5];
                         
-                        // tout afficher
-                        for (int j=0;j<items.length;j++)
-                            System.out.print(items[j]+" ");
-                        System.out.println();
+                        // Faire fonctions float de temps
+                        float tmp; // items[6];
+                        // (dernière lettre F = femme, M = homme)
+                        String course = items[7];
+                        String nomCat = items[8];
+                        String classeCat = items[9];
+                        
+                        // Construction de personne
+                        Personne p;
+                        masculin = course.charAt(course.length()-1) == 'F';
+                        if(masculin)
+                            p = new Personne(items[2], Integer.parseInt(items[3]), true);
+                        else
+                            p = new Personne(items[2], Integer.parseInt(items[3]), false);
+                        if(!listePersonne.contains(p))
+                            listePersonne.add(p);
+                        
+                        // Construction de la Course
+                        Course c;
+                        if(masculin){
+                            c = new CourseHomme(Integer.parseInt(course.substring(0, 2)), course);
+                        } else {
+                            c = new CourseFemme(Integer.parseInt(course.substring(0, 2)), course);
+                        }
+                        if(!listeCourse.contains(c))
+                            listeCourse.add(c);
+                        
+                        // Construction de la classe Classement
+                        //Classement classement = new Classement(annee, items[8], items[4], tmp, p, Integer.parseInt(items[1]), Integer.parseInt(items[9]));
+                        //listeClassement.add(classement);
+                        
+                        // Construction de la classe Inscription
+                        Inscription inscription;
                     }
                     lecteurAvecBuffer.close();
                 }catch(Exception e){
