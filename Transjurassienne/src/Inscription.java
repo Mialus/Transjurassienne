@@ -4,21 +4,20 @@ import java.util.List;
 
 public class Inscription {
 
-    // liste de personne par courses
-    private List<List<Personne>> m_listePersonne;
-    private int m_annee;
+    private  int m_annee;
     private int m_dossard;
-    private Classement m_classement;
+    private int m_classementG;
+    private float m_temps;
+    private String m_club;
     
-    public Inscription(List<List<Personne>> liste, int anne, int dos){
-        m_listePersonne=liste;
+    public Inscription(int clas, int anne, int dos, float temps, String club){
+        
+        m_club=club;
+        m_classementG=clas;
+        m_temps=temps;
         m_annee=anne;
         m_dossard=dos;
         
-    }
-
-    public List<List<Personne>> getM_listePersonne() {
-        return m_listePersonne;
     }
 
     public int getAnnee() {
@@ -28,8 +27,17 @@ public class Inscription {
     public int getDossard() {
         return m_dossard;
     }
-    
-    public Classement getClassement() {
-        return m_classement;
+
+    public int getClassementG() {
+        return m_classementG;
     }
+
+    public float getTemps() {
+        return m_temps;
+    }
+
+    public String getClub() {
+        return m_club;
+    }
+    
 }

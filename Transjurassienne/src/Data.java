@@ -9,7 +9,7 @@ import java.util.List;
 public class Data {
     List<Personne> listePersonne = new ArrayList<>();
     List<Inscription> listeInscription = new ArrayList<>();
-    List<Classement> listeClassement = new ArrayList<>();
+    List<Categorie> listeClassement = new ArrayList<>();
     List<Course> listeCourse = new ArrayList<>();
 
     public List<Personne> getListePersonne() {
@@ -20,7 +20,7 @@ public class Data {
         return listeInscription;
     }
 
-    public List<Classement> getListeClassement() {
+    public List<Categorie> getListeClassement() {
         return listeClassement;
     }
 
