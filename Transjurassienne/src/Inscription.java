@@ -15,4 +15,18 @@ public class Inscription {
         m_dossard=dos;
         
     }
+
+    public List<List<Personne>> getM_listePersonne() {
+        return m_listePersonne;
+    }
+
+    public int getAnnee() {
+        return m_annee;
+    }
+
+    public int getDossard() {
+        return m_dossard;
+    }
+    
+    
 }

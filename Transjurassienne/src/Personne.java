@@ -12,4 +12,22 @@ public class Personne {
        m_naissance=nais;
        m_masculin=mas;
     }
+
+    public String getNom() {
+        return m_nom;
+    }
+
+    public int getNaissance() {
+        return m_naissance;
+    }
+
+    public String getPays() {
+        return m_pays;
+    }
+
+    public boolean isMasculin() {
+        return m_masculin;
+    }
+    
+    
 }

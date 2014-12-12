@@ -19,5 +19,33 @@ public class Classement {
         m_claScra=sra;
         m_claCat=cat;
     }
+
+    public int getAnne() {
+        return m_anne;
+    }
+
+    public String getCategorie() {
+        return m_categorie;
+    }
+
+    public String getClub() {
+        return m_club;
+    }
+
+    public float getTemps() {
+        return m_temps;
+    }
+
+    public Personne getPers() {
+        return m_pers;
+    }
+
+    public int getClaScra() {
+        return m_claScra;
+    }
+
+    public int getClaCat() {
+        return m_claCat;
+    }
     
 }
