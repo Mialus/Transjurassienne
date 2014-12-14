@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Data {
@@ -87,6 +88,24 @@ public class Data {
                 }
             }
         }
+    }
+    
+    public List<Course> getCourseHomme(){
+        List<Course> courseHomme = new LinkedList<>();
+        for(Course c : m_listeCourse){
+            if(c instanceof CourseHomme)
+                courseHomme.add(c);
+        }
+        return courseHomme;
+    }
+    
+    public List<Course> getCourseFemme(){
+        List<Course> courseFemme = new LinkedList<>();
+        for(Course c : m_listeCourse){
+            if(c instanceof CourseFemme)
+                courseFemme.add(c);
+        }
+        return courseFemme;
     }
 
     public static void main(String[] args) {
