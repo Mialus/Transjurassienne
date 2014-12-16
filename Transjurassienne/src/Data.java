@@ -37,18 +37,23 @@ public class Data {
         for(int i=0;i<listefichiers.length;i++){
             if(listefichiers[i].endsWith(".csv")==true){
                 try{
-                    String ligne;
+                    String ligne="";
                     int annee=0;
                     BufferedReader lecteurAvecBuffer = new BufferedReader(new FileReader("./csv/" +listefichiers[i]));
                     lecteurAvecBuffer.readLine();
+                    try{
                     while ((ligne = lecteurAvecBuffer.readLine()) != null){
                         boolean masculin;
                         String[] items=ligne.split(";");
                         annee = Integer.parseInt(listefichiers[i].replace(".csv", ""));
                         String[] subs;
                         subs = items[6].split("\\s+|:\\s*|\\.\\s*|\\,\\s*");
-                        float tmp = Float.parseFloat(subs[0]) * 3600 + Float.parseFloat(subs[1]) * 60 
+                        float tmp;
+                        if(subs.length>=4)
+                            tmp=Float.parseFloat(subs[0]) * 3600 + Float.parseFloat(subs[1]) * 60 
                                 + Float.parseFloat(subs[2]) + Float.parseFloat(subs[3]) / 100;
+                        else
+                            tmp=Float.parseFloat(subs[0]) * 60 + Float.parseFloat(subs[1]) + Float.parseFloat(subs[2]) / 100;
                         String course = items[7];
                         
                         // Construction de personne
@@ -82,9 +87,13 @@ public class Data {
                         Categorie categorie = new Categorie(annee, Integer.parseInt(items[9]), items[8], p);
                         m_listeCategorie.add(categorie);
                     }
+                    } catch (Exception e) {
+                        System.out.println("Erreur parsing : " + e.getMessage()+" "+e.getLocalizedMessage());
+                        System.out.println(ligne);
+                    }
                     lecteurAvecBuffer.close();
                 }catch(Exception e){
-                    System.out.println("Erreur fichier : "+e.getMessage()+" "+e.getLocalizedMessage() + " " + e.getLocalizedMessage());
+                    System.out.println("Erreur fichier : "+e.getMessage()+" "+e.getLocalizedMessage());
                 }
             }
         }
