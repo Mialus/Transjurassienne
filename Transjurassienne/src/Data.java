@@ -20,14 +20,90 @@ public class Data {
     public List<Inscription> getListeInscription() {
         return m_listeInscription;
     }
+    
+    public List<Inscription> getListeInscriptionPersonne(Personne p) {
+        List<Inscription> inscrs = new ArrayList<>();
+        for(Inscription i : m_listeInscription){
+            if(i.getPersonne().equals(p))
+                inscrs.add(i);
+        }
+        return inscrs;
+    }
 
+    /// Fonctions pour les catégories
     public List<Categorie> getListeClassement() {
         return m_listeCategorie;
     }
+    
+    public List<Categorie> getListeClassement(int annee) {
+        List<Categorie> categs = new ArrayList<>();
+        for(Categorie c : m_listeCategorie){
+            if(c.getAnne() == annee)
+                categs.add(c);
+        }
+        return categs;
+    }
+    
+    public List<Categorie> getListeClassement(String nom) {
+        List<Categorie> categs = new ArrayList<>();
+        for(Categorie c : m_listeCategorie){
+            if(c.getNomCategorie().equals(nom))
+                categs.add(c);
+        }
+        return categs;
+    }
+    /// Fin des fonctions des catégories
 
+    /// Fonctions pour les courses
     public List<Course> getListeCourse() {
         return m_listeCourse;
     }
+    
+    public List<Course> getListeCourse(String nom) {
+        List<Course> courses = new ArrayList<>();
+        for(Course c : m_listeCourse){
+            if(c.getNom().equals(nom))
+                courses.add(c);
+        }
+        return courses;
+    }
+    
+    public List<Course> getCourseHomme(){
+        List<Course> courseHomme = new LinkedList<>();
+        for(Course c : m_listeCourse){
+            if(c instanceof CourseHomme)
+                courseHomme.add(c);
+        }
+        return courseHomme;
+    }
+    
+    public List<Course> getCourseHomme(String nom){
+        List<Course> courseHomme = new LinkedList<>();
+        for(Course c : m_listeCourse){
+            if(c instanceof CourseHomme && c.getNom().equals(nom))
+                courseHomme.add(c);
+        }
+        return courseHomme;
+    }
+    
+    public List<Course> getCourseFemme(){
+        List<Course> courseFemme = new LinkedList<>();
+        for(Course c : m_listeCourse){
+            if(c instanceof CourseFemme)
+                courseFemme.add(c);
+        }
+        return courseFemme;
+    }
+    
+    public List<Course> getCourseFemme(String nom){
+        List<Course> courseFemme = new LinkedList<>();
+        for(Course c : m_listeCourse){
+            if(c instanceof CourseFemme && c.getNom().equals(nom))
+                courseFemme.add(c);
+        }
+        return courseFemme;
+    }
+    /// Fin des fonctions pour les courses
     
     public Data(){
         File repertoire = new File("./csv");    
@@ -97,24 +173,6 @@ public class Data {
                 }
             }
         }
-    }
-    
-    public List<Course> getCourseHomme(){
-        List<Course> courseHomme = new LinkedList<>();
-        for(Course c : m_listeCourse){
-            if(c instanceof CourseHomme)
-                courseHomme.add(c);
-        }
-        return courseHomme;
-    }
-    
-    public List<Course> getCourseFemme(){
-        List<Course> courseFemme = new LinkedList<>();
-        for(Course c : m_listeCourse){
-            if(c instanceof CourseFemme)
-                courseFemme.add(c);
-        }
-        return courseFemme;
     }
 
     public static void main(String[] args) {
