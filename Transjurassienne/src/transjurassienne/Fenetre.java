@@ -10,16 +10,17 @@ public class Fenetre extends JFrame{
 	private JButton a;
         private  JButton b;
         private   JButton d;
-	private Container c;
+         Container c;
 	private JPanel z2,z3;
     
-
     public Fenetre() {
 	// mettre un titre à la fenetre
 	setTitle ("Transjurassienne");
 	// donner les dimensions de la fenetre
 	setSize(300,150);
-	
+        
+        Data data=new Data();
+
 	// creer un conteneur c : couche sur laquel les objets graphiques vont etre incorpores
         c=this.getContentPane();
         a=new JButton("Rechercher un coureur");
@@ -30,37 +31,15 @@ public class Fenetre extends JFrame{
         c.add(a,"North");
         c.add(d,"South");
         
-        EcouteurBoutonChoix ebc =new EcouteurBoutonChoix(this);
+        EcouteurBoutonChoix ebc =new EcouteurBoutonChoix(this,data);
         b.addActionListener(ebc);
-        txt2=ebc.txt;
-	
+        
+        EcouteurBoutonA ggg =new EcouteurBoutonA(this,data);
+        a.addActionListener(ggg);
+        
+        EcouteurBoutonD ddd =new EcouteurBoutonD(this,data);
+        d.addActionListener(ddd);
+        
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 }
-    
-    	public void itemStateChanged (ItemEvent ev) {
-		Object source=ev.getSource();
-
-                
-		if (source== b) {
-
-		}
-		if (source== a) {
-		}
-
-		z2= new JPanel();
-    z2.setLayout(new FlowLayout(FlowLayout.LEFT));
-	  z2.setBackground (Color.black);
-		//z2.add(lundi);
-    z3= new JPanel();
-     z3.setLayout(new FlowLayout(FlowLayout.LEFT));
-	  z3.setBackground (Color.black);
-    
-		//z3.add(lundi);
-		//z3.add(mardi);
-		
-		c.add(z2);
-		c.add(z3);	
-		z2.revalidate();
-		z3.revalidate();
-	}
 }

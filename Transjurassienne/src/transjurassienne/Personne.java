@@ -7,7 +7,7 @@ public class Personne {
 
     private String m_nom;
     private int m_naissance;
-    private String m_pays;
+    private String m_pays="fra";
     private boolean m_masculin;
     private List<Inscription> m_listeInscription;
     

@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Data {
+    int superAnne=0;
     List<Personne> m_listePersonne = new ArrayList<>();
     List<Inscription> m_listeInscription = new ArrayList<>();
     List<Categorie> m_listeCategorie = new ArrayList<>();
@@ -112,6 +113,7 @@ public class Data {
         // parcourir tous les .csv
         for(int i=0;i<listefichiers.length;i++){
             if(listefichiers[i].endsWith(".csv")==true){
+                superAnne++;
                 try{
                     String ligne="";
                     int annee=0;
@@ -173,9 +175,5 @@ public class Data {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Data data = new Data();
     }
 }
