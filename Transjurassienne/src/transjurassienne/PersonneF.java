@@ -20,7 +20,7 @@ public class PersonneF extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         
-        JTable tableau = new JTable(new TableauF(d));
+        JTable tableau = new JTable(new TableauCourseF(d));
         tableau.setDefaultRenderer(Boolean.class, new Drapeau("fra"));
         tableau.getColumnModel().getColumn(1).setCellRenderer(new Rendu());
         getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
