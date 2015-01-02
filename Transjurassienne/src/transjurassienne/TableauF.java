@@ -40,6 +40,27 @@ public class TableauF extends AbstractTableModel {
 
     }
  
+    public TableauF(Palmares d) {
+        super();
+     /*   java.util.List<Personne> pers = d.getListePersonne();
+        donnees = new Object[][]{
+            Iterator<Personne> it=pers.iterator();
+            while (it.hasNext()){
+                
+            }
+        };*/
+         pers = new Personne[]{
+                new Personne("Monique",1, true),
+                new Personne("Nicolas",2, false),
+                new Personne("Damien",3, true),
+                new Personne("Corinne",1, false),
+                new Personne("Emilie",2, true),
+                new Personne("Delphine",3, false),
+                new Personne("Eric",1, true)
+        };
+
+    }
+    
     public int getRowCount() {
         return pers.length;
     }

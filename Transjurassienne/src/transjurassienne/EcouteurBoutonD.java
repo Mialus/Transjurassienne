@@ -5,6 +5,8 @@
  */
 package transjurassienne;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 /**
@@ -25,7 +27,11 @@ public class EcouteurBoutonD implements ActionListener {
 		if (course==null){ 
 			System.out.println("aucun choix fait");
                 }else{
-                           System.out.println("ok");
+                    List<String> ln = new ArrayList<String>();
+                    List<Integer> lc = new ArrayList<Integer>();
+                    List<Integer> la = new ArrayList<Integer>();
+                    Palmares p = new Palmares(ln,lc, la);
+                    PalmaresF pf = new PalmaresF(p);
                 }
 	}
 }
